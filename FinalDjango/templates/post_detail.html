@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{% load static %}
+
+<div class="post-entry"></div>
+<h2 style="color: white;">{{ object.title }}</h2>
+    {% if object.category %}
+        <h6 style="color: white;">{{ object.category}}</h6>
+    {% endif %}
+    {% if object.image %}
+    <img src="{{object.image.url}}" alt="Image" class="img-thumbnail" style="max-height:200px">
+    {% else %}
+    <img src="{% static 'images/bliss.PNG' %}" alt="Image" class="img-thumbnail" style="max-height:200px">
+    {% endif%}
+<p style="color: white;">{{ object.body }}</p>
+
+</div>
+
+<a href="{% url 'post_edit' post.pk %}" style="color: rgb(255, 0, 0);">+ Edit Blog Post</a>
+<br>
+<a href="{% url 'post_delete' post.pk %}" style="color: rgb(255, 0, 0);">+ Delete Blog Post</a>
+{% endblock content %}

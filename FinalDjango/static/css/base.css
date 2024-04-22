@@ -1,0 +1,66 @@
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px; /* Don't forget unit (px) */
+    line-height: 1.6; /* Improve readability */
+    color: #333; /* Set default text color */
+    background-color: #f9f9f9; /* Set a light background color */
+}
+
+.container {
+    max-width: 960px; /* Limit content width for better readability */
+    margin: 0 auto; /* Center the content */
+    padding: 20px; /* Add some padding around the content */
+}
+
+header {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between; /* Align items horizontally */
+    align-items: center; /* Align items vertically */
+}
+
+header h1 a {
+    color: #333;
+    text-decoration: none;
+    font-size: 24px; /* Increase font size for the header */
+}
+
+.new_post_b a {
+    display: inline-block; /* Make the link a block */
+    background-color: #007bff; /* Add a background color */
+    color: #fff; /* Set text color to white */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 5px; /* Add rounded corners */
+    text-decoration: none;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.new_post_button a:hover {
+    background-color: #0056b3; /* Darken the background color on hover */
+}
+
+.post-entry h2 {
+    margin-bottom: 10px; /* Add space between headings */
+}
+
+.post-entry h2 a,
+.post-entry h2 a:visited {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.post-entry h2 a:hover {
+    color: #0056b3;
+}
+
+.post-entry p {
+    margin-bottom: 20px; /* Add space between paragraphs */
+}

@@ -1,0 +1,11 @@
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.post-entry {
+    border: 10px solid #000000;
+    padding: 10px;
+    text-align: center;
+ 
+}

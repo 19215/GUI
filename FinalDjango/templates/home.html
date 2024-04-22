@@ -1,0 +1,21 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/grid.css' %}">
+</head>
+<div class="post-grid">
+{% for post in object_list %}
+<div class="post-entry">
+    <h2 style="color: white;"><a href="{%  url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+    {% if post.category %}
+        <h6 style="color: white;">{{ post.category }}</h6>
+    {% endif %}
+    {% if post.image %}
+    <img src="{{post.image.url}}" alt="Image" class="img-thumbnail" style="max-height: 200px">
+    {% endif %}
+    <p style="color: white;">{{ post.body }}</p>
+</div>
+{% endfor %}
+</div>
+{% endblock content %}

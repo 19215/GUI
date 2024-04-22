@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="color: white;">New post</h1>
+<form action="{% url 'post_new' %}" enctype="multipart/form-data" method="post" style="color: white;">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" style="background-color: red;">
+</form>
+{% endblock content %}

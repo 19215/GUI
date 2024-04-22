@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        /* Reset default margin and padding */
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px; /* Don't forget unit (px) */
+    line-height: 1.6; /* Improve readability */
+    color: #333; /* Set default text color */
+    background-image: url('{% static "images/bg2.jpg" %}');
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.container {
+    max-width: 960px; /* Limit content width for better readability */
+    margin: 0 auto; /* Center the content */
+    padding: 20px; /* Add some padding around the content */
+}
+
+header {
+    border-bottom: 1px solid #000000;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between; /* Align items horizontally */
+    align-items: center; /* Align items vertically */
+    text-align: center;
+}
+
+header h1 a {
+    color: #00aaff;
+    text-decoration: none;
+    font-size: 34px; /* Increase font size for the header */
+    font-weight: bold; /* Make the font bold */
+}
+h1 a:hover {
+color: #0056b3;
+}
+
+.new_post_button a {
+    display: inline-block; /* Make the link a block */
+    background-color: #00aaff; /* Add a background color */
+    color: #fff; /* Set text color to white */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 5px; /* Add rounded corners */
+    text-decoration: none;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.new_post_button a:hover {
+    background-color: #0056b3; /* Darken the background color on hover */
+}
+
+.post-entry h2 {
+    margin-bottom: 10px; /* Add space between headings */
+}
+
+.post-entry h2 a,
+.post-entry h2 a:visited {
+    color:  #0056b3;
+    text-decoration: none;
+}
+
+.post-entry h2 a:hover {
+    color: #00aaff;
+}
+
+.post-entry p {
+    margin-bottom: 20px; /* Add space between paragraphs */
+}
+
+.lg-button{
+    margin-right: 20px;
+}
+
+.nav-left {
+    flex: 1; /* Take up remaining space */
+}
+
+.user_name,
+.lg-button {
+    margin-left: 20px; /* Move to the right */
+}
+
+
+.nav-right{
+    display: flex;
+    flex-direction:row; /* Stack elements vertically */
+}
+.nav-right{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.user_name{
+    color: #000000;
+    font-family:sans-serif;
+    font-size: 20px;
+}
+.new_post_button{
+margin-left: 13px;
+margin-top: 10px;
+}
+textarea{
+    color: black;
+}
+#id_title{
+border-style:outset;
+color: black;
+}
+select{
+    color: black;
+}
+.post-entry{
+    background-color: cadetblue;
+}
+    </style>
+    <title>Django blog</title>
+</head>
+<body>
+    
+    <div>
+        <header>
+            <div class="new_post_button">
+        <a href="{% url 'post_new' %}">+ New Blog Post</a>
+        </div>
+        
+    <div class="nav-left">
+    <h1><a href="{% url 'home' %}">Django blog</a></h1>
+    </div>
+    
+    <div class="nav-right">
+        {% if user.is_authenticated %}
+        <div class="user_name">
+        <p> <strong> Hi {{ user.username }}!</strong></p>
+    </div>
+      
+        <form action="{%  url 'logout' %}" method="post">
+            {% csrf_token %}
+            <div class="lg-button">
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-log-out"></span> Log out
+              </button>
+            </div>
+        </form>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+        
+    </div>
+    </div>
+
+</header>
+    
+
+    <div class="post">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    
+</body>
+</html>
